@@ -1,2 +1,2 @@
-**It's REACT PlayGround 💪
+## It's REACT PlayGround 💪
 
