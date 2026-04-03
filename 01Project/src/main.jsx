@@ -2,7 +2,7 @@ import {createElement, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 
-
+// createElement {reactElement} instead of JSX <App />
 const pVal = document.getElementsByClassName('greetings');
 let user;
 
@@ -17,6 +17,9 @@ const reactElement = createElement(
   'Hey there, ',
   user
 )
+
+
+
 
 createRoot(document.getElementById('loadedfries')).render(
   <StrictMode>
