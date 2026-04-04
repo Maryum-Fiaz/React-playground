@@ -14,6 +14,7 @@ function App() {
       (<h2>To start, click the above button!</h2>)
       }
 
+      <p>Oh! {count}</p>
     </>
   )
 }

@@ -1,29 +1,11 @@
-import {createElement, StrictMode } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-
-// createElement {reactElement} instead of JSX <App />
-const pVal = document.getElementsByClassName('greetings');
-let user;
-
-if(pVal.innerText === 'Hey there'){
-  user = 'Nina'
-} else {
-  user = 'Anna'
-}
-const reactElement = createElement(
-  'p',
-  {className : 'greetings'},
-  'Hey there, ',
-  user
-)
-
 
 
 
 createRoot(document.getElementById('loadedfries')).render(
   <StrictMode>
-    {reactElement}
-    {/* <App /> */}
+    <App />
   </StrictMode>,
 )
