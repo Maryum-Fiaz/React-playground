@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 
 let actionsList = [
 { id: 1, user: "Alice", type: "login", timestamp: "2026-04-03T10:00:00Z" },
@@ -11,11 +11,19 @@ let actionsList = [
 
 const Dashboard = () => {
 
+    let [count, setCount] = useState(0);
+
+    function handleClick() {
+        setCount(count + 1);
+    }
 
     const cashedList = useMemo(() => {
 
+        console.log('Calculating out....');
+        
         return actionsList.reduce((acc, list) => {
 
+            console.log('Calculating in....');
             if(!acc[list.type]){
                 acc[list.type] = { count: 0, users: [], totalAmount: 0}
             }
@@ -39,6 +47,7 @@ const Dashboard = () => {
     <>
     <h1>Dashboard</h1>
 
+    <button onClick={() => handleClick()}>Click Me ({count})</button>
     <ul>
         {Object.entries(cashedList).map(([type, data]) => (
             <li key={type}>
