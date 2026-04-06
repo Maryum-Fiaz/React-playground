@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo } from 'react'
 
 let actionsList = [
 { id: 1, user: "Alice", type: "login", timestamp: "2026-04-03T10:00:00Z" },
@@ -8,62 +8,50 @@ let actionsList = [
 { id: 3, user: "Anna", type: "comment", content: "Great!", timestamp: "2026-04-03T10:07:00Z" },
 ]  //e.g; data received from API
 
-function Dashboard() {
- let [count, setCount] = useState(0);
 
-    const handleCount = () => {
-        setCount(count + 1);
-    }
+const Dashboard = () => {
 
-    // if e.g; search feature, grp() will do math at each letter entered in search bar
-    // as this component Dashboard() run, so will grp() every time
 
-    const grp = () => {  // even count btn clicked, its still runs and do math everytime
+    const cashedList = useMemo(() => {
 
-        console.log('Calculating...');
-        
-        let newobj = {};
-        actionsList.forEach(list => {
-            if(newobj[list.type]){
-                newobj[list.type].count++;
-                newobj[list.type].users.push(list.user)
+        return actionsList.reduce((acc, list) => {
 
-            } else {
-                newobj[list.type] = {};
-                newobj[list.type].users = [list.user];
-                newobj[list.type].count = 1
+            if(!acc[list.type]){
+                acc[list.type] = { count: 0, users: [], totalAmount: 0}
             }
+            
+            acc[list.type].count++;
+            acc[list.type].users.push(list.user);
 
             if(list.type === 'purchase'){
 
-                if(newobj[list.type].totalAmount === undefined){
-                    newobj[list.type].totalAmount = 0;
-                }
-                newobj[list.type].totalAmount += list.amount
+                acc[list.type].totalAmount += list.amount;
             }
-        })
-        return newobj; // returning an object
-    }
+            return acc;
+        }, {})
 
-    const grpCall = grp();
+    }, [actionsList])
 
-    // console.log(grp())
 
+    console.log(cashedList);
+    
   return (
     <>
     <h1>Dashboard</h1>
-    <p>Summary of users actions by type in real time is shown below</p>
-
-    <button onClick={() => handleCount()}>Count this {count}</button>
 
     <ul>
-        {Object.entries(grpCall).map(([type, data]) => (
-            <li key = {type}>
-                <h2>{type}:</h2> <br />
-                 Count: {data.count} <br />
-                 User Names: {data.users} <br />
-                {type === 'purchase' && <span> Total Amount : {data.totalAmount}</span>}
-            </li> 
+        {Object.entries(cashedList).map(([type, data]) => (
+            <li key={type}>
+                <h2>{type}</h2>
+                Count: {data.count} <br />
+                {type === 'purchase' && <span> Total Amount: {data.totalAmount}</span>}
+                <h4>Users: </h4>
+                <ol>
+                    {data.users.map((user, index) => (
+                        <li key = {index}>{user}</li>
+                    ))}
+                </ol>
+            </li>
         ))}
     </ul>
     </>
@@ -71,6 +59,7 @@ function Dashboard() {
 }
 
 export default Dashboard
+
 
 
 
