@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 let actionsList = [
 { id: 1, user: "Alice", type: "login", timestamp: "2026-04-03T10:00:00Z" },
@@ -9,10 +9,19 @@ let actionsList = [
 ]  //e.g; data received from API
 
 function Dashboard() {
+ let [count, setCount] = useState(0);
 
+    const handleCount = () => {
+        setCount(count + 1);
+    }
 
-    const grp = () => {
+    // if e.g; search feature, grp() will do math at each letter entered in search bar
+    // as this component Dashboard() run, so will grp() every time
 
+    const grp = () => {  // even count btn clicked, its still runs and do math everytime
+
+        console.log('Calculating...');
+        
         let newobj = {};
         actionsList.forEach(list => {
             if(newobj[list.type]){
@@ -38,12 +47,14 @@ function Dashboard() {
 
     const grpCall = grp();
 
-    console.log(grp())
+    // console.log(grp())
 
   return (
     <>
     <h1>Dashboard</h1>
     <p>Summary of users actions by type in real time is shown below</p>
+
+    <button onClick={() => handleCount()}>Count this {count}</button>
 
     <ul>
         {Object.entries(grpCall).map(([type, data]) => (
