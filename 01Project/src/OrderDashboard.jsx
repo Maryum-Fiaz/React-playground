@@ -1,56 +1,7 @@
 import React from 'react'
 import { useMemo } from 'react'
+import { orders } from './ordersData'
 import './Order.css'
-
-let orders = [
-    {   id: 1, 
-        customer: 'Alina',
-        status: 'completed',
-        total: 190,
-        items: [
-            {name: 'shoes', price: 100, quantity: 1},
-            {name: 'socks', price: 30, quantity: 3},
-        ]
-    },
-    {   id: 2, 
-        customer: 'Benty',
-        status: 'completed',
-        total: 130,
-        items: [
-            {name: 'shoes', price: 100, quantity: 1},
-            {name: 'socks', price: 30, quantity: 1},
-        ]
-    },
-    {
-        id: 3, 
-        customer: 'Nina',
-        status: 'pending',
-        total: 120,
-        items: [
-            {name: 'shirt', price: 120, quantity: 1},
-        ]
-    },
-    {
-        id: 4, 
-        customer: 'Leo',
-        status: 'canceled',
-        total: 220,
-        items: [
-            {name: 'shoes', price: 100, quantity: 1},
-            {name: 'belt', price: 60, quantity: 2},
-        ]
-    },
-    {
-        id: 5, 
-        customer: 'Steve',
-        status: 'canceled',
-        total: 220,
-        items: [
-            {name: 'shoes', price: 100, quantity: 1},
-            {name: 'belt', price: 60, quantity: 2},
-        ]
-    },
-]
 
 const OrderDashboard = () => {
 
@@ -70,9 +21,12 @@ const OrderDashboard = () => {
         }, {})
     }, [orders])
 
-const arr = Object.entries(memoizedOrderFunction)
-    console.log(memoizedOrderFunction);
-    console.log('In arr: ', arr);
+const convertedToArray = Object.entries(memoizedOrderFunction)
+let orderSequence = ['pending', 'completed', 'canceled'];
+let sortedArray = convertedToArray.sort((a, b) => orderSequence.indexOf(a[0]) - orderSequence.indexOf(b[0]))
+    // console.log(memoizedOrderFunction);
+    console.log('In arr: ', convertedToArray);
+    console.log('In sort arr: ', sortedArray);
     
     
   return (
@@ -84,8 +38,8 @@ const arr = Object.entries(memoizedOrderFunction)
     <h3>Total Orders in the System: {orders.length}</h3>
 
     <div className='order-status'>
-        {Object.entries(memoizedOrderFunction).map(([status, data]) => (
-            <div key={status}>
+        {sortedArray.map(([status, data]) => (
+            <div key={status} className='order-data'>
                 <h2>{status}</h2>
                <h4>Count: {data.count}</h4>
                 {status === 'completed' && <span>Total Revenue: {data.totalRevenue}</span>} <br />
@@ -99,23 +53,8 @@ const arr = Object.entries(memoizedOrderFunction)
         ))}
     </div>
     </section>
-
-    <section>
-        <h2>Top Selling Items</h2>
-
-    </section>
-
-
     </>
   )
 }
 
 export default OrderDashboard
-
-
-// 💼 Exercise: Order Management Dashboard (Real World)
-
-// Scenario:
-// You’re building a dashboard for an e-commerce admin panel.
-// The backend sends a list of orders, and your job is to analyze
-// and display meaningful summaries.

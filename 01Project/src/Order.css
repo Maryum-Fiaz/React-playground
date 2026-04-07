@@ -7,3 +7,29 @@
 h1{
     color: rgb(71, 5, 71);
 }
+
+.order-status {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 1.5rem;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid saddlebrown;
+    flex-wrap: wrap;
+}
+
+.order-data {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 2rem;
+    min-width: 12rem;
+    font-size: 1.3rem;
+    border: 2px solid rgb(71, 5, 71);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
