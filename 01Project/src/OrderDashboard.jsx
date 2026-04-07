@@ -12,7 +12,7 @@ let orders = [
             {name: 'socks', price: 30, quantity: 3},
         ]
     },
-    {   id: 1, 
+    {   id: 2, 
         customer: 'Benty',
         status: 'completed',
         total: 130,
@@ -22,7 +22,7 @@ let orders = [
         ]
     },
     {
-        id: 2, 
+        id: 3, 
         customer: 'Nina',
         status: 'pending',
         total: 120,
@@ -31,7 +31,7 @@ let orders = [
         ]
     },
     {
-        id: 3, 
+        id: 4, 
         customer: 'Leo',
         status: 'canceled',
         total: 220,
@@ -41,7 +41,7 @@ let orders = [
         ]
     },
     {
-        id: 4, 
+        id: 5, 
         customer: 'Steve',
         status: 'canceled',
         total: 220,
@@ -78,6 +78,9 @@ const arr = Object.entries(memoizedOrderFunction)
   return (
     <>
     <h1>Order Management Dashboard</h1>
+    <section>
+
+    <h2>ORDER SUMMARY</h2>
     <h3>Total Orders in the System: {orders.length}</h3>
 
     <div className='order-status'>
@@ -95,6 +98,12 @@ const arr = Object.entries(memoizedOrderFunction)
             </div>
         ))}
     </div>
+    </section>
+
+    <section>
+        <h2>Top Selling Items</h2>
+
+    </section>
 
 
     </>
