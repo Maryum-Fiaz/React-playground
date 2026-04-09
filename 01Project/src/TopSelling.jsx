@@ -3,18 +3,6 @@ import { orders } from './ordersData'
 
 const TopSelling = () => {
 
-    // const res = orders.forEach( order => {
-    //     if(order.status === 'completed'){
-    //     return order.items.reduce((acc, item) => {
-    //         if(!acc[item.name]) {
-    //           item.name
-    //         }
-    
-    //         return acc;
-    //       }, {})
-    //     }
-    //   })
-
     function gettingItems (orders){
 
       return orders.reduce((acc, order) => {
