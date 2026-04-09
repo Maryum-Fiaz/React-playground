@@ -22,7 +22,7 @@ export const orders = [
         total: 130,
         items: [
             {name: 'shoes', price: 100, quantity: 1},
-            {name: 'socks', price: 30, quantity: 1},
+            {name: 'belt', price: 30, quantity: 1},
         ]
     },
     {
@@ -52,6 +52,14 @@ export const orders = [
         items: [
             {name: 'shoes', price: 100, quantity: 1},
             {name: 'belt', price: 60, quantity: 2},
+        ]
+    },
+    {   id: 6, 
+        customer: 'Joe',
+        status: 'completed',
+        total: 100,
+        items: [
+            {name: 'shoes', price: 100, quantity: 1},
         ]
     },
 ]
