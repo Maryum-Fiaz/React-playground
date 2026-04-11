@@ -8,7 +8,8 @@ function BgChanger() {
   return (
     <>
     <section className={`relative w-full h-screen duration-200 ${color}`} >
-        <div className='absolute bottom-10 right-7 pb-2 pl-6 pr-6 flex gap-3 bg-gray-200 border-2 '>
+        <p className='p-3.5 font-semibold duration-200'>Used Tailwind css here</p>
+        <div className='absolute bottom-10 right-7 pb-2 pl-6 pr-6 flex justify-center flex-wrap m-3 gap-3 bg-gray-200 border-2 '>
             <button className='bg-yellow-300 p-1.5 w-20 text-yellow-700 rounded-b-full border cursor-pointer' onClick={() => setColor('bg-yellow-300')}>Yellow</button>
             <button className='bg-red-300 p-1.5 w-20 text-red-700 rounded-b-full border cursor-pointer' onClick={() => setColor('bg-red-300')}>Red</button>
             <button className='bg-green-300 p-1.5 w-20 text-green-700 rounded-b-full border cursor-pointer' onClick={() => setColor('bg-green-300')}>Green</button>

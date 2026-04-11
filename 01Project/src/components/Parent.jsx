@@ -3,6 +3,7 @@ import '../App.css';
 import Dashboard from './Dashboard';
 import OrderDashboard from './OrderDashboard';
 import TopSelling from './TopSelling';
+import BgChanger from '../smallProjects/BgChanger';
 
 function Parent() {
   const [content, showContent] = useState(null)
@@ -28,7 +29,11 @@ function Parent() {
         <button className="nav-btn" onClick={() => handleClick(<TopSelling />)}>
           Top Selling
         </button>
-        
+
+        <button className="nav-btn" onClick={() => handleClick(<BgChanger />)}>
+          Bg Changer
+        </button>
+
         <button className="nav-btn reset-btn" onClick={() => handleClick(null)}>
           Reset View
         </button>

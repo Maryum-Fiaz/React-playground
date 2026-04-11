@@ -13,7 +13,7 @@ import BgChanger from './smallProjects/BgChanger.jsx'
 createRoot(document.getElementById('loadedfries')).render(
   <StrictMode>
     {/* <App /> */}
-    {/* <Parent /> */}
-    <BgChanger />
+    <Parent />
+    {/* <BgChanger /> */}
   </StrictMode>,
 )
