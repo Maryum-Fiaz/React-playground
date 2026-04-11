@@ -13,7 +13,7 @@ const Dashboard = () => {
   let [count, setCount] = useState(0);
 
   const cashedList = useMemo(() => {
-    console.log('Calculating... (Memo in action!)');
+    console.log('Calculating once... (Memo in action!)');
     return actionsList.reduce((acc, action) => {
       if(!acc[action.type]){
         acc[action.type] = { count: 0, users: [], totalAmount: 0}

@@ -160,7 +160,7 @@
 }
 
 
-/* Container Top Selling section */
+/* Container for the Top Selling section */
 .top-selling-card {
   text-align: center;
   padding: 20px;
@@ -222,6 +222,16 @@
   margin-bottom: 5px;
 }
 
+.extra-section{
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: gray;
+}
+
+.spanned {
+    color: rgb(73, 69, 69);
+    font-weight: bold;
+}
 
 /* Container for the Order Summary dashboard */
 .order-mgmt-container {

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { orders } from '../ordersData'
 
 const TopSelling = () => {
+  let [count, setCount] = useState(0);
+
   function getSoldItemsSummary(orders) {
+    console.log('Calculating again... even not needed');
+    
     return orders.reduce((acc, order) => {
       if (order.status === 'completed') {
         order.items.forEach(item => {
@@ -19,7 +23,7 @@ const TopSelling = () => {
   function getTopSellingItem() {
     const itemsObj = getSoldItemsSummary(orders);
     let maxKey = "No items sold yet";
-    let maxValue = 0;
+    let maxValue = -Infinity; /** New thing learned **/
 
     for (let [key, value] of Object.entries(itemsObj)) {
       if (value > maxValue) {
@@ -33,6 +37,15 @@ const TopSelling = () => {
   const topItemObj = getTopSellingItem()
 
   return (
+    <>
+    <div className="counter-section">
+        <button className="count-btn" onClick={() => setCount(count + 1)}>
+          Refresh UI State ({count})
+        </button>
+        <span> (Check console: memo not used so re-calculate on each click)</span>
+
+
+      </div>
     <section className="top-selling-card">
       <h1>Top Selling</h1>
       
@@ -43,7 +56,13 @@ const TopSelling = () => {
           {topItemObj.maxValue} Units Sold
         </div>
       </div>
+
+      <div className="extra-section"><span className='spanned'>-Infinity</span> Used here (as starting "Maximum" variable)<br />
+      <span className='spanned'>e.g: let maxValue = -Infinity;</span> <br />
+        It is a value smaller than any other number in existence.
+      </div>
     </section>
+    </>
   )
 }
 
