@@ -4,6 +4,7 @@ import App from './App.jsx'
 import Dashboard from './components/Dashboard.jsx'
 import OrderDashboard from './components/OrderDashboard.jsx'
 import TopSelling from './components/TopSelling.jsx'
+import Parent from './Parent.jsx'
 
 
 
@@ -12,6 +13,7 @@ createRoot(document.getElementById('loadedfries')).render(
     {/* <App /> */}
     {/* <Dashboard /> */}
     {/* <OrderDashboard /> */}
-    <TopSelling/>
+    {/* <TopSelling/> */}
+    <Parent />
   </StrictMode>,
 )

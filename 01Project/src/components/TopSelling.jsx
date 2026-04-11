@@ -46,7 +46,7 @@ const TopSelling = () => {
 
   return (
     <section>
-        <h2>Top Selling Items</h2>
+        <h1>Top Selling Items</h1>
         <div>
           <h2>{topItemObj.maxKey}</h2>
           <h3>Quantity: {topItemObj.maxValue}</h3>
