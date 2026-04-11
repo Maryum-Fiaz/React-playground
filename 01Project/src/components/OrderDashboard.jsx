@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { orders } from '../ordersData'
-import '../Order.css'
+import '../App.css'
 
 const OrderDashboard = () => {
   const memoizedOrderFunction = useMemo(() => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import './App.css';
-import Dashboard from './components/Dashboard';
-import OrderDashboard from './components/OrderDashboard';
-import TopSelling from './components/TopSelling';
+import '../App.css';
+import Dashboard from './Dashboard';
+import OrderDashboard from './OrderDashboard';
+import TopSelling from './TopSelling';
 
 function Parent() {
   const [content, showContent] = useState(null)
