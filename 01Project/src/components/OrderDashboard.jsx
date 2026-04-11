@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMemo } from 'react'
-import { orders } from './ordersData'
-import './Order.css'
+import { orders } from '../ordersData'
+import '../Order.css'
 
 const OrderDashboard = () => {
 

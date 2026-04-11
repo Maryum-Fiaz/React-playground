@@ -1,9 +1,9 @@
 import React from 'react'
-import { orders } from './ordersData'
+import { orders } from '../ordersData'
 
 const TopSelling = () => {
 
-    function gettingItems (orders){
+    function getSoldItemsSummary(orders){
 
       return orders.reduce((acc, order) => {
           if(order.status === 'completed'){
@@ -22,9 +22,9 @@ const TopSelling = () => {
           }, {})
     }
 
-  function calculateTop() {
+  function getTopSellingItem() {
 
-    const itemsObj = gettingItems(orders);
+    const itemsObj = getSoldItemsSummary(orders);
 
     let maxKey = null;
     let maxValue = -Infinity; // *** NEW THING: -Infinity will act as lowest than all ***
@@ -39,7 +39,7 @@ const TopSelling = () => {
     return {maxKey, maxValue}
   }
 
-  const topItemObj = calculateTop()
+  const topItemObj = getTopSellingItem()
 
     console.log('res: ', Object.entries(topItemObj))
 
