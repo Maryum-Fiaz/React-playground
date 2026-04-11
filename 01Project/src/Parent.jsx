@@ -1,33 +1,49 @@
 import React, { useState } from 'react'
+import './App.css';
 import Dashboard from './components/Dashboard';
 import OrderDashboard from './components/OrderDashboard';
 import TopSelling from './components/TopSelling';
 
 function Parent() {
+  const [content, showContent] = useState(null)
 
-    const [content, showContent] = useState(null)
+  function handleClick(componentToShow) {
+    showContent(componentToShow);
+  }
 
-    function handleClick(componentToShow){
-        showContent(componentToShow);
-    }
   return (
-    <>
-    <h1>Parent</h1>
-    <h5>Click buttons below: </h5>
+    <div className="page-container">
+      <h1 className="main-title">Project Control Center</h1>
+      <h5 className="sub-title">Select a dashboard to view details:</h5>
 
-    <hr />
+      <div className="button-group">
+        <button className="nav-btn" onClick={() => handleClick(<Dashboard />)}>
+          Active Users
+        </button>
+        
+        <button className="nav-btn" onClick={() => handleClick(<OrderDashboard />)}>
+          Order Summary
+        </button>
+        
+        <button className="nav-btn" onClick={() => handleClick(<TopSelling />)}>
+          Top Selling
+        </button>
+        
+        <button className="nav-btn reset-btn" onClick={() => handleClick(null)}>
+          Reset View
+        </button>
+      </div>
 
-    <button onClick={() => handleClick(<Dashboard />)}>Active User Dashboard</button>
-    <button onClick={() => handleClick(<OrderDashboard />)}>Order Summary</button>
-    <button onClick={() => handleClick(<TopSelling />)}>Top Selling</button>
-    <button onClick={()=> handleClick(null)}>Reset</button> {/* If content is null, nothing shows. */}
-
-    <hr />
-
-    <div>
-        {content}
+      <div className="display-area">
+        {content ? (
+          content
+        ) : (
+          <div className="empty-state">
+            <p>No component selected. Click a button above to display data.</p>
+          </div>
+        )}
+      </div>
     </div>
-    </>
   )
 }
 

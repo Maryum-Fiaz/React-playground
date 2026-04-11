@@ -2,55 +2,47 @@ import React from 'react'
 import { orders } from '../ordersData'
 
 const TopSelling = () => {
-
-    function getSoldItemsSummary(orders){
-
-      return orders.reduce((acc, order) => {
-          if(order.status === 'completed'){
-            order.items.forEach(item => {
-
-              if(!acc[item.name]) {
-                acc[item.name] = 0
-              }
-
-              acc[item.name] += item.quantity;
-
-            })
+  function getSoldItemsSummary(orders) {
+    return orders.reduce((acc, order) => {
+      if (order.status === 'completed') {
+        order.items.forEach(item => {
+          if (!acc[item.name]) {
+            acc[item.name] = 0
           }
-          return acc;
-
-          }, {})
-    }
+          acc[item.name] += item.quantity;
+        })
+      }
+      return acc;
+    }, {})
+  }
 
   function getTopSellingItem() {
-
     const itemsObj = getSoldItemsSummary(orders);
+    let maxKey = "No items sold yet";
+    let maxValue = 0;
 
-    let maxKey = null;
-    let maxValue = -Infinity; // *** NEW THING: -Infinity will act as lowest than all ***
-
-    for(let [key, value] of Object.entries(itemsObj)){
-      if(value > maxValue) {
+    for (let [key, value] of Object.entries(itemsObj)) {
+      if (value > maxValue) {
         maxValue = value;
         maxKey = key;
       }
     }
-
-    return {maxKey, maxValue}
+    return { maxKey, maxValue }
   }
 
   const topItemObj = getTopSellingItem()
 
-    console.log('res: ', Object.entries(topItemObj))
-
-
   return (
-    <section>
-        <h1>Top Selling Items</h1>
-        <div>
-          <h2>{topItemObj.maxKey}</h2>
-          <h3>Quantity: {topItemObj.maxValue}</h3>
+    <section className="top-selling-card">
+      <h1>Top Selling</h1>
+      
+      <div className="highlight-box">
+        <span className="stat-label">Most Popular Choice</span>
+        <h2 className="item-name">{topItemObj.maxKey}</h2>
+        <div className="quantity-badge">
+          {topItemObj.maxValue} Units Sold
         </div>
+      </div>
     </section>
   )
 }

@@ -1,0 +1,306 @@
+/* Container for the whole page */
+.page-container {
+  padding: 40px;
+  background-color: #fcf9f5; /* Soft cream background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  color: #4a3f35;
+}
+
+/* Header styling */
+.main-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #2d241e;
+}
+
+.sub-title {
+  margin-bottom: 30px;
+  font-style: italic;
+  color: #8c786a;
+}
+
+/* The Navigation bar */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+/* Base button style */
+.nav-btn {
+  padding: 12px 24px;
+  border: 2px solid #dcd0c0;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #6b5e51;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.nav-btn:hover {
+  background-color: #f0e9df;
+  border-color: #bfae99;
+  transform: translateY(-2px);
+}
+
+/* Specific style for the Reset button */
+.reset-btn {
+  border: 2px dashed #e07a5f;
+  color: #e07a5f;
+}
+
+.reset-btn:hover {
+  background-color: #fdf2f0;
+  border-color: #d6684d;
+}
+
+/* The "Display Box" where components appear */
+.display-area {
+  background-color: white;
+  border: 2px dashed #dcd0c0; /* This gives it that "crochet/sewn" look */
+  border-radius: 12px;
+  padding: 30px;
+  min-height: 200px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.empty-state {
+  text-align: center;
+  color: #bfae99;
+  padding-top: 50px;
+}
+
+
+/* Container for the feed */
+.activity-dashboard {
+  padding: 15px;
+}
+
+.counter-section {
+  background: #fdfaf5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.count-btn {
+  background: #2d241e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.count-btn:hover {
+  opacity: 0.8;
+}
+
+/* Activity List Styling */
+.activity-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activity-item {
+  border-left: 4px solid #dcd0c0; /* The "Timeline" line */
+  padding-left: 20px;
+  position: relative;
+}
+
+.activity-item h2 {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #8c786a;
+  margin: 0 0 5px 0;
+}
+
+.activity-stats {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2d241e;
+}
+
+.amount-label {
+  color: #3d5a44;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+/* User "Bubbles" */
+.user-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.user-pills li {
+  background: #fff;
+  border: 1px solid #dcd0c0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #5d4037;
+  box-shadow: 2px 2px 0px #eee;
+}
+
+
+/* Container Top Selling section */
+.top-selling-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.top-selling-card h1 {
+  font-size: 1.8rem;
+  color: #5d4037;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.highlight-box {
+  background: linear-gradient(145deg, #ffffff, #f9f6f2);
+  border: 2px solid #e0d5c5;
+  border-radius: 15px;
+  padding: 40px;
+  display: inline-block;
+  min-width: 280px;
+  box-shadow: 8px 8px 0px #efebe9;
+  position: relative;
+}
+
+/* Adding a little "Star" or "Award" feel */
+.highlight-box::before {
+  content: '🏆';
+  font-size: 2rem;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 0 10px;
+}
+
+.item-name {
+  font-size: 2.2rem;
+  color: #2d241e;
+  margin: 10px 0;
+  font-family: 'Georgia', serif;
+}
+
+.quantity-badge {
+  display: inline-block;
+  background-color: #e07a5f; /* That coral color we used for Reset */
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #8c786a;
+  margin-bottom: 5px;
+}
+
+
+/* Container for the Order Summary dashboard */
+.order-mgmt-container {
+  padding: 10px;
+}
+
+.order-mgmt-container h1 {
+  color: #2d241e;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.total-badge {
+  background: #f0e9df;
+  padding: 10px 20px;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* The Grid for the 3 statuses */
+.order-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Individual Status Card */
+.status-card {
+  background: white;
+  border: 1px solid #dcd0c0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.status-card h2 {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #f0e9df;
+}
+
+/* Specific colors for specific statuses */
+.status-card.pending h2 { border-color: #f4d35e; color: #b58d00; }
+.status-card.completed h2 { border-color: #81b29a; color: #3d5a44; }
+.status-card.canceled h2 { border-color: #e07a5f; color: #8d3a24; }
+
+.revenue-text {
+  display: block;
+  margin: 10px 0;
+  color: #3d5a44;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.customer-list-title {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #8c786a;
+  text-transform: uppercase;
+}
+
+.customer-ol {
+  padding-left: 20px;
+  font-size: 0.95rem;
+  max-height: 150px;
+  overflow-y: auto; /* Adds a scrollbar if the list is too long */
+}
+
+.customer-ol li {
+  margin-bottom: 5px;
+  color: #4a3f35;
+}
