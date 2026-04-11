@@ -6,10 +6,8 @@ import TopSelling from './components/TopSelling';
 function Parent() {
 
     const [content, showContent] = useState(null)
-    const [reset, setReset] = useState(false)
 
     function handleClick(componentToShow){
-        setReset(false)
         showContent(componentToShow);
     }
   return (
@@ -22,12 +20,12 @@ function Parent() {
     <button onClick={() => handleClick(<Dashboard />)}>Active User Dashboard</button>
     <button onClick={() => handleClick(<OrderDashboard />)}>Order Summary</button>
     <button onClick={() => handleClick(<TopSelling />)}>Top Selling</button>
-    <button onClick={()=> setReset(true)}>Reset</button>
+    <button onClick={()=> handleClick(null)}>Reset</button> {/* If content is null, nothing shows. */}
 
     <hr />
 
     <div>
-        {reset === false && content}
+        {content}
     </div>
     </>
   )
