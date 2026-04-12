@@ -4,6 +4,7 @@ import Dashboard from './Dashboard';
 import OrderDashboard from './OrderDashboard';
 import TopSelling from './TopSelling';
 import BgChanger from '../smallProjects/BgChanger';
+import PasswordGen from '../smallProjects/PasswordGen';
 
 function Parent() {
   const [content, showContent] = useState(null)
@@ -32,6 +33,10 @@ function Parent() {
 
         <button className="nav-btn" onClick={() => handleClick(<BgChanger />)}>
           Bg Changer
+        </button>
+
+        <button className="nav-btn" onClick={() => handleClick(<PasswordGen />)}>
+          Password Gen
         </button>
 
         <button className="nav-btn reset-btn" onClick={() => handleClick(null)}>

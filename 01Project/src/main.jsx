@@ -10,7 +10,7 @@ import PasswordGen from './smallProjects/PasswordGen.jsx'
 createRoot(document.getElementById('loadedfries')).render(
   <StrictMode>
     {/* <App /> */}
-    {/* <Parent /> */}
-    <PasswordGen />
+    <Parent />
+    {/* <PasswordGen /> */}
   </StrictMode>,
 )
