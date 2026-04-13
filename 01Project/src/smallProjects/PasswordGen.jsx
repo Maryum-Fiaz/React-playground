@@ -9,7 +9,7 @@ function PasswordGen() {
   const [charAllowed, setCharAllowed] = useState(false);
   
 
-  //useRef
+  // useRef
   const passwordRef = useRef(null);
 
   // useCallback
@@ -99,8 +99,12 @@ function PasswordGen() {
 
       <div className="bg-gray-300 p-2 rounded mt-3 w-2xl">
         <h4 className="font-bold">useCallback, useEffect and useRef used</h4>
-        <p>- useCallback: is a React Hook that lets you cache a function definition between re-renders.</p>
-        <p>- useRef: is a React Hook that lets you reference a value thats not needed for rendering.</p>
+        <p>- <span className="font-bold text-emerald-900">useCallback:</span> is a React Hook that lets you cache a function definition between re-renders. <br />
+          (used to memoized generatePassword func)
+        </p>
+        <p>- <span className="font-bold text-emerald-900">useRef:</span> is a React Hook that lets you reference a value thats not needed for rendering. <br />
+          (used to copy password)
+         </p>
       </div>
     </section>
   );
