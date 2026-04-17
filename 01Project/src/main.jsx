@@ -4,13 +4,17 @@ import './Main.css'
 import App from './App.jsx'
 import Parent from './components/Parent.jsx'
 import PasswordGen from './smallProjects/PasswordGen.jsx'
+import InputBox from './smallProjects/language-translator/InputBox.jsx'
+import FinalBox from './smallProjects/language-translator/FinalBox.jsx'
 
 
 
 createRoot(document.getElementById('loadedfries')).render(
   <StrictMode>
     {/* <App /> */}
-    <Parent />
-    {/* <PasswordGen /> */}
+    {/* <Parent /> */}
+    {/* <InputBox/> */}
+    <FinalBox />
+    
   </StrictMode>,
 )
