@@ -1,21 +1,58 @@
-import React from 'react'
-import InputBox from './InputBox'
+import React, { useState } from "react";
+import InputBox from "./InputBox";
+import useTranslation from "./useTranslation";
+import { LANGUAGE_OPTIONS } from "./data/languageData";
 
 function FinalBox() {
+  const [sentence, setSentence] = useState("Hey");
+  const [from, setFrom] = useState("en")
+  const [to, setTo] = useState("ur")
+
+  const result = useTranslation(sentence, from, to);
+
+
   return (
-    <div className='h-screen flex justify-center items-center bg-gray-200'>
-        <div className='w-full max-w-md mx-auto bg-white rounded-lg shadow-lg'>
-        <InputBox label="Source Language" />
+    <div className="h-screen flex justify-center items-center bg-gray-200">
+      <div className="w-full p-4 max-w-md mx-auto bg-white rounded-lg shadow-lg">
+        <form onSubmit={(e) => 
+        e.preventDefault()
+          
+        }>
 
-        
-        <hr className='my-1.5 mx-3 text-gray-400' />
-        
 
-        <InputBox label="Target Language" isDisabled color='bg-gray-100' selectLanguage='Spanish' />
+          <InputBox
+            label="Source Language"
+            sentence={sentence}
+            onSentenceChange={(newSent) => setSentence(newSent)}
+            selectLanguage={from}
+            onLangChange={(lang) => setFrom(lang) }
+            languageOptions={Object.entries(LANGUAGE_OPTIONS)}
+          />
 
-        </div>
+          <hr className="my-2 text-gray-300" />
+
+          <InputBox
+            label="Target Language"
+            isDisabled
+            color="bg-gray-100"
+            sentence={result}
+            selectLanguage={to}
+            onLangChange={(to) => setTo(to)}
+            languageOptions={Object.entries(LANGUAGE_OPTIONS)}
+          />
+
+          <div className="flex justify-between mt-2">
+            <span className="font-semibold text-gray-400 text-sm">Ready</span>
+            <button type="submit"
+              className="bg-blue-500 text-white px-2 py-1 text-sm rounded-md"
+            >
+              Translate
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
-export default FinalBox
+export default FinalBox;

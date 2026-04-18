@@ -31,7 +31,7 @@ function InputBox({
           value={selectLanguage}
           onChange={(e) => onLangChange && onLangChange(e.target.value)}
         >
-          {languageOptions.map((code, name) => (
+          {languageOptions.map(([code, name]) => (
             <option key={code} value={code}>
               {name}
             </option>
