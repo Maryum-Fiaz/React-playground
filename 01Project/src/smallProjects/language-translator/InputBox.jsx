@@ -16,7 +16,7 @@ function InputBox({
 
 
   return (
-    <div className="p-3 bg-white rounded-lg text-sm">
+    <div className=" bg-white rounded-lg text-sm">
       <div className="flex justify-between py-1.5">
         <label
           htmlFor={sentenceInputId}
@@ -26,15 +26,14 @@ function InputBox({
         </label>
 
         <select
-          name=""
           id={sentenceInputId}
           className="border border-gray-300 rounded px-1.5 focus:outline-none focus:ring-2 focus:ring-gray-500"
           value={selectLanguage}
           onChange={(e) => onLangChange && onLangChange(e.target.value)}
         >
-          {languageOptions.map((language) => (
-            <option key={language} value={language}>
-              {language}
+          {languageOptions.map((code, name) => (
+            <option key={code} value={code}>
+              {name}
             </option>
           ))}
         </select>
