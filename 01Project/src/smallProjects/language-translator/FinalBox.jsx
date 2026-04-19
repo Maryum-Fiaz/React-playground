@@ -44,7 +44,7 @@ function FinalBox() {
             selectLanguage={to}
             onLangChange={(to) => setTo(to)}
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
-            placeholder={placeholderTranslation}
+            placeholder={placeholderTranslation || "Translating placeholder..."}
           />
 
           <div className="flex justify-between mt-2">
