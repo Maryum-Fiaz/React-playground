@@ -4,11 +4,15 @@ import useTranslation from "./useTranslation";
 import { LANGUAGE_OPTIONS } from "./data/languageData";
 
 function FinalBox() {
-  const [sentence, setSentence] = useState("Hey");
+  const [sentence, setSentence] = useState("");
   const [from, setFrom] = useState("en")
   const [to, setTo] = useState("ur")
 
   const result = useTranslation(sentence, from, to);
+
+  function handleClearBtn() {
+    setSentence("");
+  }
 
 
   return (
@@ -43,10 +47,11 @@ function FinalBox() {
 
           <div className="flex justify-between mt-2">
             <span className="font-semibold text-gray-400 text-sm">Ready</span>
-            <button type="submit"
+            <button type="reset"
               className="bg-blue-500 text-white px-2 py-1 text-sm rounded-md"
+              onClick={() => handleClearBtn()}
             >
-              Translate
+              Clear
             </button>
           </div>
         </form>

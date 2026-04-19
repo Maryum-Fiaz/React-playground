@@ -2,12 +2,24 @@ import { useEffect, useState } from "react"
 
 
 function useTranslation(text, from, to) {
-    const [data, setData] = useState({})
+    let [data, setData] = useState("")
 
+    
     useEffect(() => {
+        if(text === ""){
+            setData("");
+            return;
+        }
+
         fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=${from}|${to}`)
         .then((res) => res.json())
-        .then((res) => setData(res.responseData.translatedText))
+        .then(res => {
+            if(res.responseData){
+                setData(res.responseData.translatedText)
+            }
+        })
+        .catch(err => console.log('Translation Error: ', err))
+        
 
     }, [text, to, from])
 
