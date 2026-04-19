@@ -9,6 +9,7 @@ function FinalBox() {
   const [to, setTo] = useState("ur")
 
   const result = useTranslation(sentence, from, to);
+  const placeholderTranslation = useTranslation("Type your text here...", "en", to)
 
   function handleClearBtn() {
     setSentence("");
@@ -18,10 +19,10 @@ function FinalBox() {
   return (
     <div className="h-screen flex justify-center items-center bg-gray-200">
       <div className="w-full p-4 max-w-md mx-auto bg-white rounded-lg shadow-lg">
-        <form onSubmit={(e) => 
+        {/* <form onSubmit={(e) => 
         e.preventDefault()
           
-        }>
+        }> */}
 
 
           <InputBox
@@ -43,6 +44,7 @@ function FinalBox() {
             selectLanguage={to}
             onLangChange={(to) => setTo(to)}
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
+            placeholder={placeholderTranslation}
           />
 
           <div className="flex justify-between mt-2">
@@ -54,7 +56,7 @@ function FinalBox() {
               Clear
             </button>
           </div>
-        </form>
+        {/* </form> */}
       </div>
     </div>
   );

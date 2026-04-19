@@ -9,6 +9,7 @@ function InputBox({
   selectLanguage = "English",
   isDisabled = false,
   color = "bg-white",
+  placeholder = 'Type your text here...',
 }) {
 
   const sentenceInputId = useId();
@@ -42,7 +43,7 @@ function InputBox({
       <div>
         <textarea
           rows="4"
-          placeholder="Type your text here..."
+          placeholder={placeholder}
           className={`border border-gray-300 rounded-lg w-full p-1.5 scroll-auto focus:outline-none focus:ring-2 focus:ring-gray-500 ${color}`}
           disabled={isDisabled}
           value={sentence}
