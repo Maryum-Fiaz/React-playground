@@ -11,9 +11,9 @@ import FinalBox from './smallProjects/language-translator/FinalBox.jsx'
 
 createRoot(document.getElementById('loadedfries')).render(
   <StrictMode>
-    {/* <App /> */}
+    
     {/* <Parent /> */}
-    {/* <InputBox/> */}
+    
     <FinalBox />
     
   </StrictMode>,

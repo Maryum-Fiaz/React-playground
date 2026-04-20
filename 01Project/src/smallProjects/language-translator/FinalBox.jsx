@@ -34,7 +34,21 @@ function FinalBox() {
             sentence={sentence}
             onSentenceChange={(newSent) => setSentence(newSent)}
             selectLanguage={from}
-            onLangChange={(lang) => setFrom(lang) }
+            onLangChange={(lang) => {
+              console.log("-------------------Lang changed in final box source: ", lang)
+              if(sentence) {
+                fetch(`https://api.mymemory.translated.net/get?q=${sentence}&langpair=${from}|${lang}`)
+                .then(res => res.json())
+                .then(res => {
+                  if(res.responseData){
+                    setSentence(res.responseData.translatedText)
+                  }
+                })
+                .catch(err => console.log('Error changing source text language: ', err))
+              }
+
+              setFrom(lang);
+            }}
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
             placeholder={finalSourcePlaceholder || "Translating Placeholder..."}
           />
@@ -46,9 +60,11 @@ function FinalBox() {
             isDisabled
             color="bg-gray-100"
             sentence={result}
-            // onSentenceChange={(newSent) => setSentence(newSent)}
             selectLanguage={to}
-            onLangChange={(to) => setTo(to)}
+            onLangChange={(lang) => {
+              console.log("-------------------Target lang changed in final box: ", lang)
+              setTo(lang)
+            }}
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
             placeholder={finalTargetPlaceholder || "Translating placeholder..."}
           />

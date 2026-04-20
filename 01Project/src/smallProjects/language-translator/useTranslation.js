@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 function useTranslation(text, from, to) {
     let [data, setData] = useState("")
 
-    
     useEffect(() => {
         if(text === ""){
             setData("");
