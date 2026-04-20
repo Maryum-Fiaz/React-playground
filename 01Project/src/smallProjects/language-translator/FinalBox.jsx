@@ -8,21 +8,25 @@ function FinalBox() {
   const [from, setFrom] = useState("en")
   const [to, setTo] = useState("ur")
 
+  // calling custom hook
   const result = useTranslation(sentence, from, to);
-  const placeholderTranslation = useTranslation("Type your text here...", "en", to)
+  // custom hook for placeholder
+  const instruction = 'Type your text here...'
+  const sourcePlaceholderTranslation = useTranslation(instruction, "en", from)
+  const targetPlaceholderTranslation = useTranslation(instruction, "en", to)
 
+  const finalSourcePlaceholder = from === 'en' ? 'Type your text here...' : sourcePlaceholderTranslation;
+  const finalTargetPlaceholder = to === 'en' ? 'Type your text here...' : targetPlaceholderTranslation;
+
+  // clear btn
   function handleClearBtn() {
     setSentence("");
   }
 
-
   return (
     <div className="h-screen flex justify-center items-center bg-gray-200">
       <div className="w-full p-4 max-w-md mx-auto bg-white rounded-lg shadow-lg">
-        {/* <form onSubmit={(e) => 
-        e.preventDefault()
-          
-        }> */}
+
 
 
           <InputBox
@@ -32,6 +36,7 @@ function FinalBox() {
             selectLanguage={from}
             onLangChange={(lang) => setFrom(lang) }
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
+            placeholder={finalSourcePlaceholder || "Translating Placeholder..."}
           />
 
           <hr className="my-2 text-gray-300" />
@@ -41,10 +46,11 @@ function FinalBox() {
             isDisabled
             color="bg-gray-100"
             sentence={result}
+            // onSentenceChange={(newSent) => setSentence(newSent)}
             selectLanguage={to}
             onLangChange={(to) => setTo(to)}
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
-            placeholder={placeholderTranslation || "Translating placeholder..."}
+            placeholder={finalTargetPlaceholder || "Translating placeholder..."}
           />
 
           <div className="flex justify-between mt-2">
@@ -56,7 +62,7 @@ function FinalBox() {
               Clear
             </button>
           </div>
-        {/* </form> */}
+
       </div>
     </div>
   );
