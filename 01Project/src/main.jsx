@@ -9,7 +9,7 @@ import FinalBox from './smallProjects/language-translator/FinalBox.jsx'
 
 
 
-createRoot(document.getElementById('loadedfries')).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     
     {/* <Parent /> */}
