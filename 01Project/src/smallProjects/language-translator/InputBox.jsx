@@ -31,7 +31,6 @@ function InputBox({
           className="border border-gray-300 rounded px-1.5 focus:outline-none focus:ring-2 focus:ring-gray-500"
           value={selectLanguage}
           onChange={(e) => { 
-            console.log("-------------------Lang changed in inputbox: ", e.target.value, `${label}`)
             onLangChange && onLangChange(e.target.value)}
         }
         >

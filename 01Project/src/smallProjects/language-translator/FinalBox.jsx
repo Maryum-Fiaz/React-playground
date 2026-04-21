@@ -10,6 +10,7 @@ function FinalBox() {
 
   // calling custom hook
   const result = useTranslation(sentence, from, to);
+
   // custom hook for placeholder
   const instruction = 'Type your text here...'
   const sourcePlaceholderTranslation = useTranslation(instruction, "en", from)
@@ -35,7 +36,6 @@ function FinalBox() {
             onSentenceChange={(newSent) => setSentence(newSent)}
             selectLanguage={from}
             onLangChange={(lang) => {
-              console.log("-------------------Lang changed in final box source: ", lang)
               if(sentence) {
                 fetch(`https://api.mymemory.translated.net/get?q=${sentence}&langpair=${from}|${lang}`)
                 .then(res => res.json())
@@ -62,7 +62,6 @@ function FinalBox() {
             sentence={result}
             selectLanguage={to}
             onLangChange={(lang) => {
-              console.log("-------------------Target lang changed in final box: ", lang)
               setTo(lang)
             }}
             languageOptions={Object.entries(LANGUAGE_OPTIONS)}
