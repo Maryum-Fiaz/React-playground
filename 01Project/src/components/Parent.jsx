@@ -5,6 +5,7 @@ import OrderDashboard from './OrderDashboard';
 import TopSelling from './TopSelling';
 import BgChanger from '../smallProjects/BgChanger';
 import PasswordGen from '../smallProjects/PasswordGen';
+import FinalBox from '../smallProjects/language-translator/FinalBox';
 
 function Parent() {
   const [content, showContent] = useState(null)
@@ -37,6 +38,10 @@ function Parent() {
 
         <button className="nav-btn" onClick={() => handleClick(<PasswordGen />)}>
           Password Gen
+        </button>
+
+        <button className="nav-btn" onClick={() => handleClick(<FinalBox />)}>
+          Language Trans
         </button>
 
         <button className="nav-btn reset-btn" onClick={() => handleClick(null)}>

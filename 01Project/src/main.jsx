@@ -12,9 +12,8 @@ import FinalBox from './smallProjects/language-translator/FinalBox.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
-    {/* <Parent /> */}
-    
-    <FinalBox />
+    <Parent />
+    {/* <FinalBox /> */}
     
   </StrictMode>,
 )
