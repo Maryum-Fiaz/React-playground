@@ -75,7 +75,7 @@ function Parent() {
         {content ? (
           content
         ) : (
-          <div className="text-center">
+          <div className="text-center text-mauve-700">
             <p>No component selected. Click a button above to display data.</p>
           </div>
         )}
