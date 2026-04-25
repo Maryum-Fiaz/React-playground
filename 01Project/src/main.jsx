@@ -11,6 +11,8 @@ import Dashboard from './components/Dashboard.jsx'
 import OrderDashboard from './components/OrderDashboard.jsx'
 import TopSelling from './components/TopSelling.jsx'
 import BgChanger from './smallProjects/BgChanger.jsx'
+import Github from './smallProjects/github-profile/Github.jsx'
+import { githubInfo } from './smallProjects/github-profile/githubInfo.js'
 
 
 const router = createBrowserRouter(
@@ -19,6 +21,7 @@ const router = createBrowserRouter(
       <Route path='bg-changer' element={<BgChanger />} />
       <Route path='password-gen' element={<PasswordGen />} />
       <Route path='language-trans' element={<FinalBox />} />
+      <Route loader={githubInfo} path='github-profile' element={<Github />} />
 
       <Route path='dashboard' element={<RootDashboard />}>
         <Route path='activeUsers' element={<Dashboard />} />

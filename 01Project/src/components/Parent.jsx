@@ -20,6 +20,7 @@ function Parent() {
     { label: "Bg Changer", address: "/bg-changer" },
     { label: "Password Gen", address: "/password-gen" },
     { label: "Language Trans", address: "/language-trans" },
+    { label: "Github Profile", address: "/github-profile" }
   ];
 
   return (
