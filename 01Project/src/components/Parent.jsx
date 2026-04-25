@@ -5,23 +5,28 @@ import TopSelling from "./TopSelling";
 import BgChanger from "../smallProjects/BgChanger";
 import PasswordGen from "../smallProjects/PasswordGen";
 import FinalBox from "../smallProjects/language-translator/FinalBox";
+import RootDashboard from "../smallProjects/Dashboards/RootDashboard";
+import { Link, Outlet, useLocation } from "react-router";
 
 function Parent() {
-  const [content, showContent] = useState(null);
+  // const [content, showContent] = useState(null);
+  const location = useLocation();
+  
   const [view, setView] = useState(false);
+  const [click, setClick] = useState(false);
+
+  console.log('location: ', location.pathname);
 
   const projects = [
-    { label: "Active Users", component: <Dashboard /> },
-    { label: "Order Summary", component: <OrderDashboard /> },
-    { label: "Top Selling", component: <TopSelling /> },
-    { label: "Bg Changer", component: <BgChanger /> },
-    { label: "Password Gen", component: <PasswordGen /> },
-    { label: "Language Trans", component: <FinalBox /> },
+    { label: "Dashboards", component: <RootDashboard />, address: "/dashboard" },
+    { label: "Bg Changer", component: <BgChanger />, address: "/bg-changer" },
+    { label: "Password Gen", component: <PasswordGen />, address: "/password-gen" },
+    { label: "Language Trans", component: <FinalBox />, address: "/language-trans" },
   ];
 
-  function handleClick(componentToShow) {
-    showContent(componentToShow);
-  }
+  // function handleClick(componentToShow) {
+  //   showContent(componentToShow);
+  // }
 
   return (
     <div className="p-9 bg-mauve-900 min-h-screen font-mono">
@@ -37,7 +42,7 @@ function Parent() {
         <div className="flex gap-3">
           <button
             className="border-2 border-red-400 text-red-400 bg-red-100 py-3 px-6 rounded-lg hover:-translate-y-1 transition duration-300"
-            onClick={() => handleClick(null)}
+            // onClick={() => handleClick(null)}
           >
             ↺ Reset View
           </button>
@@ -59,26 +64,40 @@ function Parent() {
             x
           </button>
 
-          {projects.map(({ label, component }) => (
+          {projects.map(({ label, address }) => (
             <button
               key={label}
               className="border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-3 px-6 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
-              onClick={() => handleClick(component)}
+              // onClick={() => handleClick(component)}
+              // onClick={() => setClick(!click)}
             >
-              {label}
+             <Link to={address}>{label}</Link>
             </button>
           ))}
         </div>
       )}
 
-      <div className="bg-mauve-100 p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed">
+      {/* <div className="bg-mauve-100 p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed">
         {content ? (
           content
         ) : (
           <div className="text-center text-mauve-700">
             <p>No component selected. Click a button above to display data.</p>
-          </div>
+          </div> 
         )}
+        <Outlet />
+      </div> */}
+
+      <div className="bg-mauve-100 p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed">
+        {location.pathname === "/" ? (
+          <div className="text-center text-mauve-700">
+            <p>No component selected. Click a button above to display data.</p>
+          </div>
+        ) : (
+          <Outlet />
+        )}
+          
+        
       </div>
     </div>
   );

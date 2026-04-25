@@ -6,14 +6,47 @@ import Parent from './components/Parent.jsx'
 import PasswordGen from './smallProjects/PasswordGen.jsx'
 import InputBox from './smallProjects/language-translator/InputBox.jsx'
 import FinalBox from './smallProjects/language-translator/FinalBox.jsx'
+import RootDashboard from './smallProjects/Dashboards/RootDashboard.jsx'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router'
+import Dashboard from './components/Dashboard.jsx'
+import OrderDashboard from './components/OrderDashboard.jsx'
+import TopSelling from './components/TopSelling.jsx'
+import BgChanger from './smallProjects/BgChanger.jsx'
 
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Parent />}>
+      <Route path='bg-changer' element={<BgChanger />} />
+      <Route path='password-gen' element={<PasswordGen />} />
+      <Route path='language-trans' element={<FinalBox />} />
+
+      <Route path='dashboard' element={<RootDashboard />}>
+        <Route path='activeUsers' element={<Dashboard />} />
+        <Route path='orderSummary' element={<OrderDashboard />} />
+        <Route path='topSelling' element={<TopSelling />} />
+      
+      </Route>
+    </Route>
+  )
+)
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
-    <Parent />
-    {/* <FinalBox /> */}
+    <RouterProvider router={router} />
     
   </StrictMode>,
 )
+
+
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+    
+//     {/* <Parent /> */}
+//     <RootDashboard />
+    
+//   </StrictMode>,
+// )
