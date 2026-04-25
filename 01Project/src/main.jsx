@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './Main.css'
-import App from './App.jsx'
 import Parent from './components/Parent.jsx'
 import PasswordGen from './smallProjects/PasswordGen.jsx'
 import InputBox from './smallProjects/language-translator/InputBox.jsx'
@@ -31,22 +30,9 @@ const router = createBrowserRouter(
   )
 )
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
     <RouterProvider router={router} />
-    
   </StrictMode>,
 )
 
-
-
-// createRoot(document.getElementById('root')).render(
-//   <StrictMode>
-    
-//     {/* <Parent /> */}
-//     <RootDashboard />
-    
-//   </StrictMode>,
-// )

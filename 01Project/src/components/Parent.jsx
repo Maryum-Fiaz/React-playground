@@ -9,12 +9,11 @@ import RootDashboard from "../smallProjects/Dashboards/RootDashboard";
 import { Link, Outlet, useLocation } from "react-router";
 
 function Parent() {
-
   const location = useLocation();
 
   const [view, setView] = useState(false);
 
-  console.log('location: ', location.pathname);
+  console.log("location: ", location.pathname);
 
   const projects = [
     { label: "Dashboards", address: "/dashboard" },
@@ -22,7 +21,6 @@ function Parent() {
     { label: "Password Gen", address: "/password-gen" },
     { label: "Language Trans", address: "/language-trans" },
   ];
-
 
   return (
     <div className="p-9 bg-mauve-900 min-h-screen font-mono">
@@ -36,14 +34,11 @@ function Parent() {
         </h5>
 
         <div className="flex gap-3">
-    <Link to="/">
-    
-          <button
-            className="border-2 border-red-400 text-red-400 bg-red-100 py-3 px-6 rounded-lg hover:-translate-y-1 transition duration-300"
-          >
-            ↺ Reset View
-          </button>
-    </Link>
+          <Link to="/">
+            <button className="border-2 border-red-400 text-red-400 bg-red-100 py-3 px-6 rounded-lg hover:-translate-y-1 transition duration-300">
+              ↺ Reset View
+            </button>
+          </Link>
 
           <button
             className="bg-taupe-300 text-mauve-800 border-2 border-mauve-500 rounded-lg font-semibold py-3 px-4 cursor-pointer hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
@@ -65,12 +60,12 @@ function Parent() {
 
           {projects.map(({ label, address }) => (
             <Link to={address}>
-            <button
-              key={label}
-              className="border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-3 px-6 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
-            >
-             {label}
-            </button>
+              <button
+                key={label}
+                className="border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-3 px-6 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
+              >
+                {label}
+              </button>
             </Link>
           ))}
         </div>
@@ -84,7 +79,6 @@ function Parent() {
         ) : (
           <Outlet />
         )}
-          
       </div>
     </div>
   );
