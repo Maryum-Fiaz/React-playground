@@ -9,11 +9,10 @@ import RootDashboard from "../smallProjects/Dashboards/RootDashboard";
 import { Link, Outlet, useLocation } from "react-router";
 
 function Parent() {
-  // const [content, showContent] = useState(null);
+
   const location = useLocation();
-  
+
   const [view, setView] = useState(false);
-  const [click, setClick] = useState(false);
 
   console.log('location: ', location.pathname);
 
@@ -40,12 +39,15 @@ function Parent() {
         </h5>
 
         <div className="flex gap-3">
+    <Link to="/">
+    
           <button
             className="border-2 border-red-400 text-red-400 bg-red-100 py-3 px-6 rounded-lg hover:-translate-y-1 transition duration-300"
-            // onClick={() => handleClick(null)}
           >
             ↺ Reset View
           </button>
+    </Link>
+
           <button
             className="bg-taupe-300 text-mauve-800 border-2 border-mauve-500 rounded-lg font-semibold py-3 px-4 cursor-pointer hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
             onClick={() => setView(!view)}
@@ -65,28 +67,17 @@ function Parent() {
           </button>
 
           {projects.map(({ label, address }) => (
+            <Link to={address}>
             <button
               key={label}
               className="border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-3 px-6 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
-              // onClick={() => handleClick(component)}
-              // onClick={() => setClick(!click)}
             >
-             <Link to={address}>{label}</Link>
+             {label}
             </button>
+            </Link>
           ))}
         </div>
       )}
-
-      {/* <div className="bg-mauve-100 p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed">
-        {content ? (
-          content
-        ) : (
-          <div className="text-center text-mauve-700">
-            <p>No component selected. Click a button above to display data.</p>
-          </div> 
-        )}
-        <Outlet />
-      </div> */}
 
       <div className="bg-mauve-100 p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed">
         {location.pathname === "/" ? (
@@ -97,7 +88,6 @@ function Parent() {
           <Outlet />
         )}
           
-        
       </div>
     </div>
   );
