@@ -17,15 +17,12 @@ function Parent() {
   console.log('location: ', location.pathname);
 
   const projects = [
-    { label: "Dashboards", component: <RootDashboard />, address: "/dashboard" },
-    { label: "Bg Changer", component: <BgChanger />, address: "/bg-changer" },
-    { label: "Password Gen", component: <PasswordGen />, address: "/password-gen" },
-    { label: "Language Trans", component: <FinalBox />, address: "/language-trans" },
+    { label: "Dashboards", address: "/dashboard" },
+    { label: "Bg Changer", address: "/bg-changer" },
+    { label: "Password Gen", address: "/password-gen" },
+    { label: "Language Trans", address: "/language-trans" },
   ];
 
-  // function handleClick(componentToShow) {
-  //   showContent(componentToShow);
-  // }
 
   return (
     <div className="p-9 bg-mauve-900 min-h-screen font-mono">
