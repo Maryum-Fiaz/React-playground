@@ -1,5 +1,4 @@
 import React from 'react'
-import { githubInfo } from './githubInfo'
 import { useLoaderData } from 'react-router'
 
 export default function Github() {
@@ -34,7 +33,7 @@ export default function Github() {
       </div>
 
       {/* Right Part: Avatar Image in Circle */}
-      <div className="flex-shrink-0">
+      <div className="shrink-0">
         <div className="w-40 h-40 rounded-full border-4 border-mauve-200 overflow-hidden shadow-lg">
           <img 
             src={data.avatar_url} 
