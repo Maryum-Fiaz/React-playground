@@ -48,7 +48,7 @@ export const grocerySlice = createSlice({
 
         // toggle bought check
         toggleBought: (state, action) => {
-            const itemBought = state.items.find(item => item.id = action.payload)
+            const itemBought = state.items.find(item => item.id === action.payload)
 
             if(itemBought){
                 itemBought.bought = !itemBought.bought
