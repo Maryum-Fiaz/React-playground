@@ -2,7 +2,8 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    items: [{id: 1, title: '1st Grocery', bought: false}]
+    items: [],
+    editingId: null,
 }
 
 export const grocerySlice = createSlice({
@@ -23,19 +24,30 @@ export const grocerySlice = createSlice({
         // deleting item
         removeGrocery: (state, action) => {
            state.items = state.items.filter(item => item.id !== action.payload)
+
+           if(state.editingId === action.payload){
+            state.editingId = null;
+           }
         },
 
         // editing item
         updateGrocery: (state, action) => {
+            
            const itemToUpdate = state.items.find(item => item.id === action.payload.id);
 
            if(itemToUpdate) {
             itemToUpdate.title = action.payload.title
            }
+
+           state.editingId = null
+        },
+
+        setEditingId: (state, action) => {
+            state.editingId = state.editingId === action.payload ? null : action.payload;
         }
     }
 })
 
 
-export const {addGrocery, removeGrocery, updateGrocery} = grocerySlice.actions;
+export const {addGrocery, removeGrocery, updateGrocery, setEditingId} = grocerySlice.actions;
 export default grocerySlice.reducer;

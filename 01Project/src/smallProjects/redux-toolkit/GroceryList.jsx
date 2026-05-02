@@ -1,9 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeGrocery } from './features/grocery/grocerySlice'
+import { removeGrocery, setEditingId } from './features/grocery/grocerySlice'
 
 function GroceryList() {
-
 
     const items = useSelector(state => state.grocery.items)
     const dispatch = useDispatch();
@@ -25,7 +24,9 @@ function GroceryList() {
       </div>
 
       <div className="flex gap-2">
-        <button className="p-2 text-stone-400 hover:text-rose-300 hover:bg-stone-800 rounded-lg transition-all">
+        <button className="p-2 text-stone-400 hover:text-rose-300 hover:bg-stone-800 rounded-lg transition-all"
+        onClick={() => dispatch(setEditingId(item.id))}
+        >
           ✏
         </button>
         <button className="p-2 text-stone-400 hover:text-red-400 hover:bg-stone-800 rounded-lg transition-all"
