@@ -3,7 +3,7 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
     items: [],
-    editingId: null,
+    editingId: null, // will provide same id as item.id to update only that item
 }
 
 export const grocerySlice = createSlice({
@@ -44,10 +44,19 @@ export const grocerySlice = createSlice({
 
         setEditingId: (state, action) => {
             state.editingId = state.editingId === action.payload ? null : action.payload;
+        },
+
+        // toggle bought check
+        toggleBought: (state, action) => {
+            const itemBought = state.items.find(item => item.id = action.payload)
+
+            if(itemBought){
+                itemBought.bought = !itemBought.bought
+            }
         }
     }
 })
 
 
-export const {addGrocery, removeGrocery, updateGrocery, setEditingId} = grocerySlice.actions;
+export const {addGrocery, removeGrocery, updateGrocery, setEditingId, toggleBought} = grocerySlice.actions;
 export default grocerySlice.reducer;
