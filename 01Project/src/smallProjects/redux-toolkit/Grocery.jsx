@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GroceryForm from './GroceryForm'
 import GroceryList from './GroceryList'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import Info from './Info'
 
 function Grocery() {
+  const [showInfo, setShowInfo] = useState(false)
+
+
   return (
     <Provider store={store}>
-    <div className="min-h-screen bg-stone-900 flex items-center justify-center p-4">
+    <div className="relative min-h-screen bg-stone-900 flex items-center justify-center p-4">
+
+      {/* Button to show Info */}
+        <button 
+          onClick={() => setShowInfo(true)}
+          className="absolute top-6 left-6 text-stone-500 hover:text-rose-300 border border-stone-700 px-3 py-1 rounded-full text-sm transition-all"
+        >
+          My Notes
+        </button>
+        {showInfo && <Info onClose={() => setShowInfo(false)} />}
+
+
       <div className="w-full max-w-md bg-stone-800 shadow-2xl rounded-2xl p-8 border border-stone-700">
         <h1 className="text-3xl font-light text-rose-200 mb-8 text-center tracking-tight">
           Grocery <span className="font-serif italic">Grabber</span>

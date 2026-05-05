@@ -2,8 +2,8 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    items: [],
-    editingId: null, // will provide same id as item.id to update only that item
+    items: [],  // all items here, in object form e.g; [{}, {}, {}...]
+    editingId: null, // will have same value id as item.id to update, only that item('s id) which is going to update
 }
 
 export const grocerySlice = createSlice({
