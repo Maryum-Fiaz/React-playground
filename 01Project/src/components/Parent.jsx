@@ -10,7 +10,6 @@ import { Link, Outlet, useLocation } from "react-router";
 
 function Parent() {
   const location = useLocation();
-
   const [view, setView] = useState(false);
 
   console.log("location: ", location.pathname);
@@ -25,25 +24,30 @@ function Parent() {
   ];
 
   return (
-    <div className="p-9 bg-mauve-900 min-h-screen font-mono">
-      <h1 className="text-5xl font-bold my-3 text-mauve-500">
+    // Fixed padding: switched p-9 to responsive px-4 py-6 sm:p-9
+    <div className="px-4 py-6 sm:p-9 bg-mauve-900 min-h-screen font-mono w-full overflow-x-hidden">
+      
+      {/* Fixed Heading: changed from text-5xl to dynamic text-3xl sm:text-5xl */}
+      <h1 className="text-3xl sm:text-5xl font-bold my-3 text-mauve-500 break-words">
         Project Control Center
       </h1>
 
-      <div className="flex justify-between items-center mb-7">
+      {/* Fixed Layout Row: changed to flex-col sm:flex-row to stack nicely on phones */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-7">
         <h5 className="italic text-mauve-300 text-sm tracking-widest uppercase">
           Select the button to view details:
         </h5>
 
-        <div className="flex gap-3">
-          <Link to="/">
-            <button className="border-2 border-red-400 text-red-400 bg-red-100 py-3 px-6 rounded-lg hover:-translate-y-1 transition duration-300">
+        {/* Action Buttons: wrapped with flex-wrap so they don't break containers */}
+        <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+          <Link to="/" className="flex-1 sm:flex-initial">
+            <button className="w-full text-center border-2 border-red-400 text-red-400 bg-red-100 py-2.5 px-4 sm:py-3 sm:px-6 rounded-lg hover:-translate-y-1 transition duration-300 text-sm sm:text-base">
               ↺ Reset View
             </button>
           </Link>
 
           <button
-            className="bg-taupe-300 text-mauve-800 border-2 border-mauve-500 rounded-lg font-semibold py-3 px-4 cursor-pointer hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
+            className="flex-1 sm:flex-none bg-taupe-300 text-mauve-800 border-2 border-mauve-500 rounded-lg font-semibold py-2.5 px-4 cursor-pointer hover:-translate-y-1 hover:bg-mauve-300 transition duration-300 text-sm sm:text-base whitespace-nowrap"
             onClick={() => setView(!view)}
           >
             ⊞ Open Projects
@@ -51,20 +55,20 @@ function Parent() {
         </div>
       </div>
 
+      {/* Projects Grid Panel */}
       {view && (
-        <div className="relative w-full flex flex-wrap justify-center gap-3 p-5 mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+        <div className="relative w-full flex flex-wrap justify-center gap-3 p-5 pt-8 mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
           <button
-            className="absolute top-2 right-3 text-sm px-2 py-1 rounded-md border border-red-400 text-red-300 hover:scale-105 transition"
+            className="absolute top-2 right-3 text-sm px-2 py-1 rounded-md border border-red-400 text-red-300 hover:scale-105 transition z-10"
             onClick={() => setView(false)}
           >
             x
           </button>
 
           {projects.map(({ label, address }) => (
-            <Link to={address}>
+            <Link to={address} key={label} className="w-full sm:w-auto">
               <button
-                key={label}
-                className="border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-3 px-6 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300"
+                className="w-full border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-2.5 px-4 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300 text-sm sm:text-base"
               >
                 {label}
               </button>
@@ -73,10 +77,11 @@ function Parent() {
         </div>
       )}
 
-      <div className="bg-mauve-100 p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed">
+      {/* Render Box Area: lowered padding from p-7 to px-3 py-6 sm:p-7 so embed items fit snugly */}
+      <div className="bg-mauve-100 px-3 py-6 sm:p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed w-full overflow-hidden">
         {location.pathname === "/" ? (
-          <div className="text-center text-mauve-700">
-            <p>No component selected. Click a button above to display data.</p>
+          <div className="text-center text-mauve-700 px-2">
+            <p>No component selected. Click Open Projects button to display data.</p>
           </div>
         ) : (
           <Outlet />
