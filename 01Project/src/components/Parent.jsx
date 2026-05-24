@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dashboard from "./Dashboard";
 import OrderDashboard from "./OrderDashboard";
 import TopSelling from "./TopSelling";
@@ -7,10 +7,26 @@ import PasswordGen from "../smallProjects/PasswordGen";
 import FinalBox from "../smallProjects/language-translator/FinalBox";
 import RootDashboard from "../smallProjects/Dashboards/RootDashboard";
 import { Link, Outlet, useLocation } from "react-router";
+import Message from "../Message";
 
 function Parent() {
   const location = useLocation();
   const [view, setView] = useState(false);
+  const [showMsg, setShowMsg] = useState(true)
+
+  // to clear message after 4000 sec
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMsg(false)
+    }, 4000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  // function to dismiss message
+  const dismiss = () => {
+    setShowMsg(false);
+  }
 
   console.log("location: ", location.pathname);
 
@@ -23,22 +39,20 @@ function Parent() {
     { label: "Grocery List", address: "/grocery-list" }
   ];
 
-  return (
-    // Fixed padding: switched p-9 to responsive px-4 py-6 sm:p-9
+  return showMsg ? (
+    <Message dismiss={dismiss} />
+  ) : (
     <div className="px-4 py-6 sm:p-9 bg-mauve-900 min-h-screen font-mono w-full overflow-x-hidden">
       
-      {/* Fixed Heading: changed from text-5xl to dynamic text-3xl sm:text-5xl */}
-      <h1 className="text-3xl sm:text-5xl font-bold my-3 text-mauve-500 break-words">
+      <h1 className="text-3xl sm:text-5xl font-bold my-3 text-mauve-500 wrap-break-word">
         Project Control Center
       </h1>
 
-      {/* Fixed Layout Row: changed to flex-col sm:flex-row to stack nicely on phones */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-7">
         <h5 className="italic text-mauve-300 text-sm tracking-widest uppercase">
           Select the button to view details:
         </h5>
 
-        {/* Action Buttons: wrapped with flex-wrap so they don't break containers */}
         <div className="flex flex-wrap gap-2 w-full sm:w-auto">
           <Link to="/" className="flex-1 sm:flex-initial">
             <button className="w-full text-center border-2 border-red-400 text-red-400 bg-red-100 py-2.5 px-4 sm:py-3 sm:px-6 rounded-lg hover:-translate-y-1 transition duration-300 text-sm sm:text-base">
@@ -59,7 +73,7 @@ function Parent() {
       {view && (
         <div className="relative w-full flex flex-wrap justify-center gap-3 p-5 pt-8 mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
           <button
-            className="absolute top-2 right-3 text-sm px-2 py-1 rounded-md border border-red-400 text-red-300 hover:scale-105 transition z-10"
+            className="absolute top-2 right-3 text-sm px-2 py-1 rounded-md border border-red-400 text-red-300 hover:scale-105 transition z-10 cursor-pointer"
             onClick={() => setView(false)}
           >
             x
@@ -68,7 +82,7 @@ function Parent() {
           {projects.map(({ label, address }) => (
             <Link to={address} key={label} className="w-full sm:w-auto">
               <button
-                className="w-full border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-2.5 px-4 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300 text-sm sm:text-base"
+                className="w-full border-2 border-mauve-400 bg-mauve-100 text-mauve-700 font-semibold py-2.5 px-4 rounded-lg hover:-translate-y-1 hover:bg-mauve-300 transition duration-300 text-sm sm:text-base cursor-pointer"
               >
                 {label}
               </button>
@@ -77,7 +91,6 @@ function Parent() {
         </div>
       )}
 
-      {/* Render Box Area: lowered padding from p-7 to px-3 py-6 sm:p-7 so embed items fit snugly */}
       <div className="bg-mauve-100 px-3 py-6 sm:p-7 min-h-50 rounded-lg border-2 border-mauve-500 border-dashed w-full overflow-hidden">
         {location.pathname === "/" ? (
           <div className="text-center text-mauve-700 px-2">
