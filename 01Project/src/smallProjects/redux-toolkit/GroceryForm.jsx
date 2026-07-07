@@ -44,19 +44,22 @@ function GroceryForm() {
     console.log('input: ', input)
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
-      <input 
-        type="text" 
-        placeholder="Add Item..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="flex-1 bg-stone-700 border-none rounded-xl px-4 py-3 text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-rose-400 outline-none transition-all"
-      />
-      
-      <button type='submit' className="bg-rose-400 hover:bg-rose-500 text-stone-900 font-medium px-6 py-3 rounded-xl transition-colors duration-200">
-       {itemEditId !== null ? 'Update' : 'Add'}
-      </button>
-    </form>
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full mb-3">
+  <input 
+    type="text" 
+    placeholder="Add Item..."
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    className="w-full sm:flex-1 bg-stone-700 border-none rounded-xl px-4 py-3 text-stone-100 placeholder:text-stone-400 focus:ring-2 focus:ring-rose-400 outline-none transition-all"
+  />
+  
+  <button 
+    type='submit' 
+    className="w-full sm:w-auto bg-rose-400 hover:bg-rose-500 text-stone-900 font-medium px-6 py-3 rounded-xl transition-colors duration-200 whitespace-nowrap"
+  >
+    {itemEditId !== null ? 'Update' : 'Add'}
+  </button>
+</form>
   )
 }
 

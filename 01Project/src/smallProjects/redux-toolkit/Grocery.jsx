@@ -28,7 +28,7 @@ function Grocery() {
           Grocery <span className="font-serif italic">Grabber</span>
         </h1>
         
-        <div className="mb-8">
+        <div className="mb-8 flex">
           <GroceryForm />
         </div>
 
