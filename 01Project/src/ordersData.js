@@ -1,8 +1,8 @@
 // 💼 Exercise: Order Management Dashboard (Real World)
 
 // Scenario:
-// You’re building a dashboard for an e-commerce admin panel.
-// The backend sends a list of orders, and your job is to analyze
+// building a dashboard for an e-commerce admin panel.
+// The backend sends a list of orders, and our job is to analyze
 // and display meaningful summaries.
 
 

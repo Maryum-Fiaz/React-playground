@@ -25,12 +25,15 @@ const router = createBrowserRouter(
       <Route loader={githubInfo} path='github-profile' element={<Github />} />
       <Route path='grocery-list' element={<Grocery />} />
 
+      {/* dashboard route with childern routes */}
       <Route path='dashboard' element={<RootDashboard />}>
         <Route path='activeUsers' element={<Dashboard />} />
         <Route path='orderSummary' element={<OrderDashboard />} />
         <Route path='topSelling' element={<TopSelling />} />
-      
       </Route>
+
+      {/* more routes here ... */}
+
     </Route>
   )
 )
